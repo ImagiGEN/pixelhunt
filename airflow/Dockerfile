@@ -6,7 +6,5 @@ RUN apt-get autoremove -yqq --purge \
     && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt /
 
-COPY gcs_key.json /
-
 USER airflow
 RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" -r /requirements.txt
