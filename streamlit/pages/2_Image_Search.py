@@ -16,5 +16,8 @@ if search_by == "Prompt":
 
 if st.button("Search"):
     with st.spinner(text="Loading..."):
-        df = search.get_similar_images(file)
-        print(df)
+        if prompt:
+            df = search.get_similar_images_using_prompt(prompt)
+        else:
+            df = search.get_similar_images_using_image(file)
+        st.write(df)

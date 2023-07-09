@@ -40,7 +40,7 @@ def _read_all_images():
     print("Total number of catalog images =", "{:,}".format(len(image_files)))
     return image_files
 
-def get_similar_images(reference_image, topn=6):
+def get_similar_images_using_image(reference_image, topn=6):
     image = Image.open(reference_image)
     image.save("/tmp/reference_image.jpg")
     reference_image = "/tmp/reference_image.jpg"
@@ -50,4 +50,10 @@ def get_similar_images(reference_image, topn=6):
     df = azure.get_results_using_image(
         reference_image, nobackground_image, image_files, list_emb, topn=topn, disp=False
     )
+    return df
+
+def get_similar_images_using_prompt(prompt, topn=6):
+    list_emb = _import_embeddings()
+    image_files = _read_all_images()
+    df = azure.get_results_using_prompt(prompt, image_files, list_emb, topn, disp=False)
     return df
