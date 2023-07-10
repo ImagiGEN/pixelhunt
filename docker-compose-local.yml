@@ -252,17 +252,17 @@ services:
       <<: *airflow-common-depends-on
       airflow-init:
         condition: service_completed_successfully
-  # streamlit:
-  #   container_name: streamlit
-  #   build:
-  #       context: streamlit
-  #   restart: always
-  #   ports:
-  #       - "8090:8090"
-  #   env_file:
-  #     - .env
-  #   volumes:
-  #     - shared-directory:/data
+  streamlit:
+    container_name: streamlit
+    build:
+        context: streamlit
+    restart: always
+    ports:
+        - "8090:8090"
+    env_file:
+      - .env
+    volumes:
+      - shared-directory:/data
 volumes:
   postgres-db-volume:
   shared-directory:
