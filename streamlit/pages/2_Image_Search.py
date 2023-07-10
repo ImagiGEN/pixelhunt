@@ -7,7 +7,7 @@ def display_image_grid(images):
     pass
 
 def search_images():
-    if prompt:
+    if search_by == "Prompt":
         df = search.get_similar_images_using_prompt(prompt)
     else:
         df = search.get_similar_images_using_image(file)

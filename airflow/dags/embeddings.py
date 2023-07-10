@@ -84,7 +84,7 @@ def process_all_images(image_files, max_workers, max_retries):
     return [emb for emb in embeddings if emb is not None]
 
 def compute_vector_embeddings():
-    IMAGE_PATH=os.path.join(IMAGE_DIR, '039*.jpg')
+    IMAGE_PATH=os.path.join(IMAGE_DIR, '*.jpg')
     image_files = glob.glob(IMAGE_PATH)
     print("image_files:")
     print(image_files)
