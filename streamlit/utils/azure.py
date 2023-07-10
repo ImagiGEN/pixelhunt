@@ -334,6 +334,7 @@ def describe_image_with_AzureCV4(image_file):
     """
     Get tags & caption from an image using Azure Computer Vision 4 Florence
     """
+    result_string = ""
     options = "&features=tags,caption"
     model = "?api-version=2023-02-01-preview&modelVersion=latest"
     url = endpoint + "/computervision/imageanalysis:analyze" + model + options
@@ -350,16 +351,23 @@ def describe_image_with_AzureCV4(image_file):
     results = r.json()
 
     print("Automatic analysis of the image using Azure Computer Vision 4.0:")
+    result_string += "\nAutomatic analysis of the image using Azure Computer Vision 4.0:\n"
     print("\033[1;31;34m")
     print("   Main caption:")
+    result_string += "\n   Main caption:\n"
     print(
         f"    {results['captionResult']['text']} = {results['captionResult']['confidence']:.3f}"
     )
+    result_string += f"\n    {results['captionResult']['text']} = {results['captionResult']['confidence']:.3f}\n"
 
     print("\033[1;31;32m")
     print("   Detected tags:")
+    result_string += "\n   Detected tags:\n"
     for tag in results['tagsResult']['values']:
         print(f"    {tag['name']:18} = {tag['confidence']:.3f}")
+        result_string += f"\n    {tag['name']:18} = {tag['confidence']:.3f}\n"
+    
+    return result_string
 
 
 def get_image_from_url(image_url):
