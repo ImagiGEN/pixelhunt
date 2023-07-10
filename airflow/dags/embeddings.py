@@ -20,10 +20,9 @@ from airflow.models.baseoperator import chain
 import requests, zipfile, io
 from concurrent.futures import ThreadPoolExecutor
 
-key = os.getenv("azure_cv_key")
-endpoint = os.getenv("azure_cv_endpoint")
+key = os.environ.get("azure_cv_key")
+endpoint = os.environ.get("azure_cv_endpoint")
 DATA_DIR = os.environ.get("DATA_DIR")
-DATA_DIR="/opt/airflow/dags/data/"
 IMAGE_DIR = os.path.join(DATA_DIR, "fashion")
 JSON_DIR = os.path.join(DATA_DIR, "json")
 DATA_SOURCE=os.environ.get("DATA_SOURCE", 'https://www.dropbox.com/s/f5983zo3etaqap9/fashion_samples.zip')
@@ -38,13 +37,10 @@ dag = DAG('compute_vector_embeddings', default_args=default_args, schedule_inter
 
 def fetch_images():
     import os
-    print("inside fetch")
-    # os.system(f"wget {DATA_SOURCE}")
-    # os.system(f"unzip fashion_samples.zip -d {IMAGE_DIR}")
-    print(f"wget -P {DATA_DIR} {DATA_SOURCE}")
-    print(os.system("apt-get install wget -y"))
-    output = os.system(f"wget {DATA_SOURCE}")
-    print(output)
+    print("Mkdirs:", os.system(f"mkdir -p {DATA_DIR}"))
+    print("Mkdirs:", os.system(f"mkdir -p {JSON_DIR}"))
+    print("Wget:", os.system(f"wget  -P {DATA_DIR} {DATA_SOURCE}"))
+    print("Unzip:", os.system(f"unzip {os.path.join(DATA_DIR, 'fashion_samples.zip')} -d {DATA_DIR}"))
 
 def process_image(image_file, max_retries=20):
     """
@@ -88,33 +84,10 @@ def process_all_images(image_files, max_workers, max_retries):
     return [emb for emb in embeddings if emb is not None]
 
 def compute_vector_embeddings():
-    print(os.listdir("/opt/airflow/dags/data/fashion/"))
     IMAGE_PATH=os.path.join(IMAGE_DIR, '039*.jpg')
     image_files = glob.glob(IMAGE_PATH)
     print("image_files:")
     print(image_files)
-    num_images_per_row = 10
-    num_images_per_col = 5
-    img_size = 200
-    start = 1000
-
-    samples = image_files[start : start + (num_images_per_row * num_images_per_col)]
-
-    samples_images = Image.new(
-        "RGB", (num_images_per_row * img_size, num_images_per_col * img_size)
-    )
-
-    # Load and resize the images
-    sample_images = [
-        Image.open(image_file).resize((img_size, img_size)) for image_file in samples
-    ]
-
-    # Paste the images onto the new image
-    for idx, img in enumerate(sample_images):
-        x = (idx % num_images_per_row) * img_size
-        y = (idx // num_images_per_row) * img_size
-        samples_images.paste(img, (x, y))
-
     num_cores = multiprocessing.cpu_count()
 
     print("Number of CPU cores =", num_cores)
@@ -155,8 +128,6 @@ def compute_vector_embeddings():
         json.dump(list_emb, f)
 
     print("Done. Vector embeddings have been saved in:", json_file)
-
-
 
 
 with dag:
