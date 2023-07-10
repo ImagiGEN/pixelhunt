@@ -1,1 +1,11 @@
 python-dotenv
+pandas
+seaborn
+pillow
+tqdm
+billiard
+wget
+opencv-python 
+cleanvision 
+umap-learn 
+pprintjson

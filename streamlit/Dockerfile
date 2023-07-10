@@ -15,6 +15,8 @@ RUN pip install -r requirements.txt
 RUN pip install --upgrade google-cloud-storage
 # Install the dependency
 
+RUN mkdir /data && chmod 777 /data
+
 ### Container Env same as local at this point
 EXPOSE 8090
 
