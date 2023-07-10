@@ -1,6 +1,5 @@
 import streamlit as st
 from dotenv import load_dotenv
-import google.cloud.storage as gcs
 
 load_dotenv()
 

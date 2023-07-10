@@ -410,6 +410,3 @@ def get_results_using_prompt(query, image_files, list_emb, topn, disp=False):
                                     num_cols=nb_cols, num_rows=nb_rows)
 
     return df
-
-
-
