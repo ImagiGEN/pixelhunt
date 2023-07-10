@@ -10,8 +10,8 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](https://streamlit.io/)
 
 ## Link to the Live Applications
-* [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)](http://35.211.154.219:8090/)
-* [![Codelabs](https://img.shields.io/badge/codelabs-4285F4?style=for-the-badge&logo=codelabs&logoColor=white)](https://codelabs-preview.appspot.com/?file_id=1Xm0_C4J_oDYF_AqTcTQ3F07brDOWb9-vMEsGfFzEja0#0)
+* [Streamlit](http://35.211.154.219:8090/)
+* [Codelabs](https://codelabs-preview.appspot.com/?file_id=1Xm0_C4J_oDYF_AqTcTQ3F07brDOWb9-vMEsGfFzEja0#0)
 
 ## Architecture
 
