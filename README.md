@@ -13,6 +13,11 @@
 * Streamlit Application : 
 * [CodeLab Docs](https://codelabs-preview.appspot.com/?file_id=1Xm0_C4J_oDYF_AqTcTQ3F07brDOWb9-vMEsGfFzEja0#0)
 
+## Architecture
+
+Following is the architecture diagram for the current application
+![Architecture Diagram](./diagrams/architecture.png)
+
 ## Running the application
 ### Pre-requisites
 - [Docker Engine](https://docs.docker.com/engine/install/)
@@ -51,6 +56,9 @@
 ## Team
 | Contributor    | Contibutions |
 | -------- | ------- |
-| Ashritha Goramane  | -             |
+| Ashritha Goramane  | -            |
 | Rishabh Indoria    | -            |
-| Parvati Sohani     | - |
+| Parvati Sohani     | -            |
+
+Guided by: Prof. Srikanth Krishnamurthy
+Supported by: [Piyush](https://github.com/piyush-an)
