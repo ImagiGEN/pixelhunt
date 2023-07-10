@@ -1,7 +1,7 @@
 import streamlit as st
 from utils import search
 
-st.title('Query Transcripts')
+st.title('Image Search')
 
 def display_image_grid(images):
     pass
