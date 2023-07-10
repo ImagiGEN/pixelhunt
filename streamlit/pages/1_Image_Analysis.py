@@ -20,5 +20,6 @@ if selected_image:
     st.image(selected_image, width=250)
 
 if st.button("Analyze"):
-    analysis = get_analysis()
+    with st.spinner(text="Analyzing..."):
+        analysis = get_analysis()
     st.write(analysis)
