@@ -124,9 +124,8 @@ Following is the architecture diagram for the current application
 ## Team
 | Contributor    | Contibutions |
 | -------- | ------- |
-| Ashritha Goramane  | -            |
-| Rishabh Indoria    | -            |
-| Parvati Sohani     | -            |
-
+| Ashritha Goramane  | Image and Prompt Search, Image Cluster Analysis	|
+| Rishabh Indoria    | Image Embeddings, Image Clustering		|
+| Parvati Sohani     | Image Analysis, Documentation			|
 Guided by: Prof. Srikanth Krishnamurthy
 Supported by: [Piyush](https://github.com/piyush-an)
