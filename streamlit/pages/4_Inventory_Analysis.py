@@ -11,7 +11,7 @@ def get_umap_figure():
     plot = plots.get_3d_cluster_plot(clusters)
     return plot
    
-st.title('Inventory')
+st.title('Inventory Analysis')
 
 clusters = get_image_clusters()
 

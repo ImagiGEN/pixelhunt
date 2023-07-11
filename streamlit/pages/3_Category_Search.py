@@ -3,7 +3,7 @@ from utils import cluster
 import numpy as np
 
 
-st.title('Image Search')
+st.title('Product Category Search')
 
 def display_image_grid(images):
     pass

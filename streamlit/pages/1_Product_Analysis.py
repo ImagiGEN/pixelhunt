@@ -10,7 +10,7 @@ def get_analysis():
     result = analysis._get_image_analysis(selected_image)
     return result
     
-st.title('Image Analysis')
+st.title('Product Analysis')
 
 image_files = get_image_files()
 
