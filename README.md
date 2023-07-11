@@ -46,7 +46,75 @@ Following is the architecture diagram for the current application
     ```bash
         make down
     ```
+## Project Tree
 
+```
+.
+├── Makefile
+├── README.md
+├── airflow
+│   ├── Dockerfile
+│   ├── dags
+│   │   ├── embeddings.py
+│   │   └── utils
+│   │       ├── __init__.py
+│   │       └── azure.py
+│   └── requirements.txt
+├── case_study
+│   ├── 01 Fashion visual search - Images analysis.ipynb
+│   ├── 02_Fashion_visual search_Images_embeddings.ipynb
+│   ├── 03_Fashion_visual_search_Search_using_an_image_or_a_prompt.ipynb
+│   ├── 04_Fashion_visual_search_Images_Clustering.ipynb
+│   ├── 05_Fashion_visual_search_Gradio_App.ipynb
+│   ├── azure.env
+│   ├── azure.py
+│   ├── images
+│   │   ├── embeddings.jpg
+│   │   ├── fashionheader.png
+│   │   ├── fashionprocess.png
+│   │   ├── florence.jpg
+│   │   ├── map1.png
+│   │   ├── map2.png
+│   │   ├── umap1.png
+│   │   ├── umap2.png
+│   │   ├── umap3.png
+│   │   ├── umap4.png
+│   │   ├── webapp1.jpg
+│   │   └── webapp2.jpg
+│   ├── requirements.txt
+│   └── test
+│       ├── test1.jpg
+│       ├── test2.jpg
+│       ├── test3.jpg
+│       ├── test4.jpg
+│       ├── test5.jpg
+│       └── test6.jpg
+├── diagrams
+│   ├── architecture.png
+│   ├── architecture.py
+│   ├── requirements.txt
+│   └── resources
+│       ├── azure.jpg
+│       ├── dropbox.png
+│       └── streamlit.jpg
+├── docker-compose-local.yml
+└── streamlit
+    ├── Dockerfile
+    ├── Home.py
+    ├── pages
+    │   ├── 1_Image_Analysis.py
+    │   ├── 2_Image_Search.py
+    │   ├── 3_Image_Clustering.py
+    │   └── 4_Inventory_Analysis.py
+    ├── requirements.txt
+    └── utils
+        ├── __init__.py
+        ├── analysis.py
+        ├── azure.py
+        ├── cluster.py
+        ├── plots.py
+        └── search.py
+```
 ## References
 - [Streamlit](https://streamlit.io/)
 - [Azure Computer Vision](https://azure.microsoft.com/en-us/products/cognitive-services/vision-services)
