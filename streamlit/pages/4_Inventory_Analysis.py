@@ -1,13 +1,14 @@
 import streamlit as st
-from utils import clusters as cluster_utils
+from utils import cluster as cluster_utils
+from utils import plots
 
 @st.cache_data
 def get_image_clusters():
-    df = cluster_utils.form_clusters()
+    df = cluster_utils.cluster_images()
     return df
 
 def get_umap_figure():
-    plot = cluster_utils.get_3d_cluster_plot(clusters)
+    plot = plots.get_3d_cluster_plot(clusters)
     return plot
    
 st.title('Inventory')
