@@ -42,26 +42,7 @@ def _read_all_images():
     print("Total number of catalog images =", "{:,}".format(len(image_files)))
     return image_files
 
-def get_similar_images_using_image(reference_image, topn=6):
-    image = Image.open(reference_image)
-    image.save("/tmp/reference_image.jpg")
-    reference_image = "/tmp/reference_image.jpg"
-    list_emb = _import_embeddings()
-    image_files = _read_all_images()
-    nobackground_image = azure.remove_background(reference_image)
-    df = azure.get_results_using_image(
-        reference_image, nobackground_image, image_files, list_emb, topn=topn, disp=False
-    )
-    return df
-
-def get_similar_images_using_prompt(prompt, topn=6):
-    list_emb = _import_embeddings()
-    image_files = _read_all_images()
-    df = azure.get_results_using_prompt(prompt, image_files, list_emb, topn, disp=False)
-    return df
-
-def cluster_images():
-    nb_clusters = 4
+def cluster_images(nb_clusters=17):
     list_emb = _import_embeddings()
     image_files = _read_all_images()
     kmeans = KMeans(n_clusters=nb_clusters, 
@@ -70,25 +51,25 @@ def cluster_images():
     kmeans.fit(list_emb)
     labels = kmeans.labels_
     print("Cluster labels:\n", labels)
-    df_clusters = pd.DataFrame({"image_file": image_files[:18], "vector": list_emb, "cluster": labels})
+    df_clusters = pd.DataFrame({"image_file": image_files, "vector": list_emb, "cluster": labels})
     cluster_labels = [
-    "0", "Shoes",
-    "1", "Shorts",
-    "2", "Woman clothes",
-    "3", "Sheets",
-    # "4", "Colored Woman shirts",
-    # "5", "Woman T shirts",
-    # "6", "Accessories",
-    # "7", "Coats",
-    # "8", "Jumpers",
-    # "9", "Sportwear shirts",
-    # "10", "Lingerie",
-    # "11", "Colored shirts",
-    # "12", "Dresses",
-    # "13", "Trousers",
-    # "14", "Shirts",
-    # "15", "Glasses and caps",
-    # "16", "Fancy clothes",
+        "0", "Accessories",
+        "1", "Women clothes",
+        "2", "Women Sweatshirts",
+        "3", "Baby clothes",
+        "4", "Printed Tshirts",
+        "5", "Trousers",
+        "6", "Shoes",
+        "7", "Full sleeved Tshirts",
+        "8", "Sweatshirts",
+        "9", "Coats",
+        "10", "Fancy Clothes",
+        "11", "Lingerie",
+        "12", "Shorts",
+        "13", "Trousers",
+        "14", "Women's Tshirts",
+        "15", "Dresses",
+        "16", "Jumpers",
     ]
     cluster_ids = [int(cluster_labels[i]) for i in range(0, len(cluster_labels), 2)]
     category_names = [cluster_labels[i + 1] for i in range(0, len(cluster_labels), 2)]
@@ -97,15 +78,15 @@ def cluster_images():
     cluster_names_series = pd.Series(category_names, name="cluster_label")
     cluster_labels_df = pd.concat([cluster_ids_series, cluster_names_series], axis=1)
     df_results = pd.merge(df_clusters, cluster_labels_df, on="cluster", how="left")
-# Adding 1 to avoid the number 0
+    # Adding 1 to avoid the number 0
     df_results["cluster"] = df_results["cluster"].apply(lambda x: int(x) + 1)
-# Numbers in 2 characters
+    # Numbers in 2 characters
     df_results["cluster"] = df_results["cluster"].apply(
         lambda x: f"0{x}" if int(x) < 10 else x
     )
-# Adding some text
+    #  Adding some text
     df_results["cluster"] = df_results["cluster"].astype(str)
     df_results["Cluster and Label"] = (
-    "Cluster " + df_results["cluster"] + " = " + df_results["cluster_label"]
+        "Cluster " + df_results["cluster"] + " = " + df_results["cluster_label"]
     )
     return df_results
