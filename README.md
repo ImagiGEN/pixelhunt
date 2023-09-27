@@ -1,4 +1,4 @@
-# Assignment3
+# Azure Computer Vision
 
 ## Technical stack
 [![Apache Airflow](https://img.shields.io/badge/Airflow-017CEE?style=for-the-badge&logo=Apache%20Airflow&logoColor=white)](https://airflow.apache.org/)
@@ -120,12 +120,3 @@ Following is the architecture diagram for the current application
 - [Azure Computer Vision](https://azure.microsoft.com/en-us/products/cognitive-services/vision-services)
 - [Azure Computer Vision workshop](https://github.com/Azure/gen-cv)
 - [Fashion Image Dataset](https://www.dropbox.com/s/f5983zo3etaqap9/fashion_samples.zip)
-
-## Team
-| Contributor    | Contibutions |
-| -------- | ------- |
-| Ashritha Goramane  | Image and Prompt Search, Image Cluster Analysis	|
-| Rishabh Indoria    | Image Embeddings, Image Clustering		|
-| Parvati Sohani     | Image Analysis, Documentation			|
-Guided by: Prof. Srikanth Krishnamurthy
-Supported by: [Piyush](https://github.com/piyush-an)
